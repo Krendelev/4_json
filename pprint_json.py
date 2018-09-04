@@ -7,16 +7,16 @@ def load_data(filepath):
         return json.load(handle)
 
 
-def pretty_print_json(data):
-    return json.dumps(data, ensure_ascii=False, indent=4)
+def pretty_print_json(unformatted_data):
+    return json.dumps(unformatted_data, ensure_ascii=False, indent=4)
 
 
 if __name__ == '__main__':
     try:
-        raw_json = load_data(sys.argv[1])
+        unformatted_json = load_data(sys.argv[1])
     except (IndexError, IOError):
         print("There is no file to prettify")
     except ValueError:
         print("Not a valid JSON file")
     else:
-        print(pretty_print_json(raw_json))
+        print(pretty_print_json(unformatted_json))
